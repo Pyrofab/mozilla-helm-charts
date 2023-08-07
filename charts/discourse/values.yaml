@@ -40,6 +40,12 @@ db:
   init:
     enabled: false
 
+remoteLogger:
+  enabled: true
+  image:
+    repository: 783633885093.dkr.ecr.us-west-2.amazonaws.com/remote_syslog2
+    tag: 0.2
+
 deployment:
   annotations: {}
   labels: {}

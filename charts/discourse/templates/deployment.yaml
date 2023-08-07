@@ -119,8 +119,9 @@ spec:
         volumeMounts:
         - mountPath: /logs
           name: logs
+      {{- if .Values.remoteLogger.enabled }}
       - name: remote-logger
-        image: 783633885093.dkr.ecr.us-west-2.amazonaws.com/remote_syslog2:0.2
+        image: "{{ .Values.remoteLogger.image.repository }}:{{ .Values.remoteLogger.image.tag }}"
         resources:
           limits:
             cpu: 200m
@@ -133,6 +134,7 @@ spec:
           mountPath: /logs
         - name: remote-logger
           mountPath: /etc/rs2
+      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
