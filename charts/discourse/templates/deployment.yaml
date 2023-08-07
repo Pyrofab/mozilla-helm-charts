@@ -34,6 +34,10 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Values.deployment.name }}
+        {{- if .Values.extraEnvVarsSecret }}
+        - secretRef:
+            name: {{ .Values.extraEnvVarsSecret }}
+        {{- end }}
         {{- if .Values.externalSecrets.enabled }}
         - secretRef:
             name: {{ .Values.deployment.name }}

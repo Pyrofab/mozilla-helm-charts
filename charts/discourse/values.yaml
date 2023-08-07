@@ -32,6 +32,8 @@ configMap:
   labels: {}
   name: discourse
 
+extraEnvVarsSecret: ""
+
 db:
   migrate:
     enabled: false
